@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'  />
+	<title>Minecraft Adventures by Grimdeath</title>
+	<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet'>
+	<style>
+		* {margin: 0; padding: 0;}
+		/* --- */
+		h1 {font-size: 100px; line-height: 100px; margin-bottom: 25px; text-transform: uppercase; text-shadow: 5px 5px 5px rgba(0,0,0,0.5);}
+		a {
+			color: #FFF; text-decoration: none;
+			-moz-transition: all 0.3s ease-in-out; -ms-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out;
+		}
+		p {font-weight: 300; text-shadow: 5px 5px 5px rgba(0,0,0,0.9);}
+		ul li {list-style: none;}
+		/* --- */
+		html, body {width: 100%; height: 100%; overflow: hidden;}
+		body {background: #050505; color: #FFF; font-family: 'Oswald', sans-serif; letter-spacing: 1px;}
+		.left {float: left;}
+		.right {float: right;}
+		#arrows {position: absolute; top: 100px; left: 0; right: 0; z-index: 300;}
+			#arrows a {opacity: 0.5;}
+			#arrows a:hover {opacity: 1;}
+				#arrowLeft {position: absolute; left: -15px;}
+				#arrowRight {position: absolute; right: -15px;}
+		#wrap {position: absolute; bottom: 52px; left: 0; right: 0; z-index: 999;}
+			#contentTitan, #contentSource {max-width: 940px; padding: 20px; margin: auto;}
+			#contentSource {display: none;}
+			#links {margin-top: 25px; overflow: hidden;}
+			#links a {background: #000; float: left; padding: 10px 20px; text-align: center; text-transform: uppercase;}
+			#links a:hover {background: #FFF; color: #000;}
+			#links a+a {margin-left: 10px;}
+		footer {
+			background: #0d0d0d; color: #999; font-size: 12px; padding: 10px; text-transform: uppercase; overflow: hidden;
+			position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+			box-shadow: inset 0 5px 3px rgba(0,0,0,0.5);
+		}
+			footer ul li {float: left;}
+			footer ul li+li {margin-left: 20px;}
+			footer a {color: #CCC; font-weight: bold;}
+			footer a:hover {color: #FFF}
+		#pattern {background: url('img/bgstripes.png'); position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 200;}
+		#bgimg {
+			background: url('bg/titan_001.jpg') center center no-repeat fixed;
+			position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 100;
+			-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;
+		}
+	</style>
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+	<section id="arrows">
+		<a href="#" id="arrowLeft"><img src="img/arrow_left.png" alt="Arrow Left"></a>
+		<a href="#" id="arrowRight"><img src="img/arrow_right.png" alt="Arrow Right"></a>
+	</section>
+	<section id="wrap">
+		<div id="contentTitan">
+			<h1>Titan</h1>
+			<p>Picking up several years after the events of The Source you find yourself on the desert world Titan. The dark substance known as 'The Corrupt' has has continued to consume and destroy every living soul. Do you have what it takes to discover the source of this dark power and defeat it?</p>
+			<div id="links">
+				<a href="http://youtu.be/UZ3ZIwTq2ig" target="_blank">Video</a>
+				<a href="/minecraft/Titan.zip">Download 2.0 Beta 1</a>
+				<!-- <a href="#">Forum</a> -->
+			</div>
+		</div>
+		<div id="contentSource">
+			<h1>The<br>Source</h1>
+			<p>You awaken aboard an abandoned station floating through space. The core is damaged, leaving you no choice but to track down and craft replacement parts found within a variety of exotic dimensions. You'll overcome waves of monsters, platforming, and puzzles in your quest to discover what happened. Do the answers lie in the mysterious set of manuscripts left behind by the shadowy figure known only as The Source?</p>
+			<div id="links">
+				<a href="http://youtu.be/AZYb_ltMy-s" target="_blank">Video</a>
+				<a href="/minecraft/TheSource.zip">Download 1.3</a>
+				<!-- <a href="#">Forum</a> -->
+			</div>
+		</div>
+	</section>
+	<footer>
+		<ul class="left">
+			<li>Select Map</li>
+			<li><a href="/minecraft/">Titan</a></li>
+			<li><a href="/minecraft/?map=thesource">The Source</a></li>
+		</ul>
+		<span class="right">Minecraft Adventures by <a href="http://www.endigodesign.com" target="_blank">Endigo Design</a></span>
+	</footer>
+	<section id="pattern"></section>
+	<section id="bgimg"></section>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script>
+		// URL Parameters
+		function getUrlVars(){
+		    var vars = [], hash;
+		    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+		    for(var i = 0; i < hashes.length; i++){
+		        hash = hashes[i].split('=');
+		        vars.push(hash[0]);
+		        vars[hash[0]] = hash[1];
+		    }
+		    return vars;
+		}
+		// Jquery
+		(function(){
+			var currentImg = 0;
+			// Set Visible Map
+			if(getUrlVars()['map'] == 'thesource'){ // The Source
+				$('#contentTitan').hide();
+				$('#contentSource').show();
+				var bgArr = new Array(
+					"url('bg/source_001.jpg')",
+					"url('bg/source_002.jpg')",
+					"url('bg/source_003.jpg')",
+					"url('bg/source_004.jpg')",
+					"url('bg/source_005.jpg')",
+					"url('bg/source_006.jpg')"
+				);
+				$('#bgimg').css("background-image", bgArr[currentImg]); // Set Starter Default
+			} else { // Titan
+				$('#contentTitan').show();
+				$('#contentSource').hide();
+				var bgArr = new Array(
+					"url('bg/titan_001.jpg')",
+					"url('bg/titan_002.jpg')",
+					"url('bg/titan_003.jpg')",
+					"url('bg/titan_004.jpg')",
+					"url('bg/titan_005.jpg')",
+					"url('bg/titan_006.jpg')",
+					"url('bg/titan_007.jpg')"
+				);
+			}
+			// Arrow Controls
+			$('#arrowLeft').on('click', function(e){
+				e.preventDefault()
+				if(currentImg > 0){ // minimum img
+					currentImg--;
+					$('#bgimg').fadeOut(function(){ $(this).css("background-image", bgArr[currentImg]).fadeIn(); });
+				}
+			});
+			$('#arrowRight').on('click', function(e){
+				e.preventDefault()
+				if(currentImg < (bgArr.length-1)){ // max image
+					currentImg++;
+					$('#bgimg').fadeOut(function(){ $(this).css("background-image", bgArr[currentImg]).fadeIn(); });
+				}
+			});
+		})();
+	</script>
+</body>
+</html>
